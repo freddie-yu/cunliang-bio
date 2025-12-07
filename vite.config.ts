@@ -4,12 +4,15 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, '.', '');
-    // Auto-detect base path for GitHub Pages - more flexible approach
+    
+    // Smart base path detection
     let base = '/';
-    if (mode === 'production') {
-      // Use environment variable if set, otherwise use repository name
+    
+    // Only use custom base path for GitHub Pages
+    if (mode === 'production' && env.VITE_DEPLOY_TARGET === 'github') {
       base = env.VITE_BASE_PATH || '/Open-Bio-Template/';
     }
+    
     return {
       base: base,
       server: {
@@ -20,6 +23,19 @@ export default defineConfig(({ mode }) => {
       resolve: {
         alias: {
           '@': path.resolve(__dirname, '.'),
+        }
+      },
+      build: {
+        // Ensure assets are properly bundled
+        assetsInlineLimit: 0,
+        rollupOptions: {
+          output: {
+            // Better code splitting for deployment
+            manualChunks: {
+              'react-vendor': ['react', 'react-dom'],
+              'framer-motion': ['framer-motion'],
+            }
+          }
         }
       }
     };
