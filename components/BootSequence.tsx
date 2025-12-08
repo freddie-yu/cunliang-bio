@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState, useRef } from 'react';
 import { Theme } from '../types';
 import TerminalLock from './TerminalLock';
@@ -24,17 +23,18 @@ const BOOT_LOGS = [
   "         Mounting /home/guest...",
   "[  OK  ] Mounted /home/guest.",
   "[  OK  ] Reached target Graphical Interface.",
-  "         Starting OpenBio OS v1.0.0...",
+  "         Starting CunliangOS v1.0.0...",
   "[  OK  ] Initialized Virtual File System.",
-  "[  OK  ] Loaded Kernel Module: openbio_core.",
+  "[  OK  ] Loaded Kernel Module: biohub_core.",
   "[  OK  ] Loaded Kernel Module: react_renderer.",
-  "         Welcome to OpenBio Dev Hub.",
+  "         Welcome to BioHub Dev Environment.",
 ];
 
 const BootSequence: React.FC<BootSequenceProps> = ({ theme, onComplete }) => {
   const [progress, setProgress] = useState(0);
   const [logs, setLogs] = useState<string[]>([]);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const bootStartedRef = useRef(false);
 
   // Auto-scroll logic for Linux logs
   useEffect(() => {
@@ -45,8 +45,12 @@ const BootSequence: React.FC<BootSequenceProps> = ({ theme, onComplete }) => {
 
   // MacOS Boot Logic
   useEffect(() => {
+    // 防止重复执行
+    if (bootStartedRef.current) return;
+    bootStartedRef.current = true;
+
     if (theme === 'macos') {
-      const duration = 2500; // 2.5s boot time
+      const duration = 2500;
       const interval = 30;
       const step = 100 / (duration / interval);
 
@@ -54,7 +58,7 @@ const BootSequence: React.FC<BootSequenceProps> = ({ theme, onComplete }) => {
         setProgress(prev => {
           if (prev >= 100) {
             clearInterval(timer);
-            setTimeout(onComplete, 500); // Small delay after 100%
+            setTimeout(onComplete, 500);
             return 100;
           }
           return prev + step;
@@ -64,7 +68,6 @@ const BootSequence: React.FC<BootSequenceProps> = ({ theme, onComplete }) => {
       return () => clearInterval(timer);
     } 
     else if (theme === 'linux') {
-       // Realistic scrolling boot logs
        let i = 0;
        const interval = setInterval(() => {
          if (i >= BOOT_LOGS.length) {
@@ -76,7 +79,7 @@ const BootSequence: React.FC<BootSequenceProps> = ({ theme, onComplete }) => {
          const timestamp = (Math.random() * 2 + i * 0.1).toFixed(4).padStart(7, ' ');
          setLogs(prev => [...prev, `[${timestamp}] ${BOOT_LOGS[i]}`]);
          i++;
-       }, 50); // Faster scroll for realism
+       }, 50);
 
        return () => clearInterval(interval);
     }
