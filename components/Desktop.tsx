@@ -22,7 +22,7 @@ const AppleLogo = () => (
 
 const RealMacOSIcon: React.FC<{ appId: AppID; size: number }> = ({ appId, size }) => {
   let src = '';
-  
+
   switch (appId) {
     case 'terminal':
       src = assetUrls.terminal;
@@ -45,10 +45,10 @@ const RealMacOSIcon: React.FC<{ appId: AppID; size: number }> = ({ appId, size }
   }
 
   return (
-    <img 
-      src={src} 
-      alt={appId} 
-      style={{ width: size, height: size }} 
+    <img
+      src={src}
+      alt={appId}
+      style={{ width: size, height: size }}
       className="object-contain drop-shadow-md transition-all duration-200 active:brightness-75 pointer-events-none"
     />
   );
@@ -68,8 +68,8 @@ const AppIcon: React.FC<{ appId: AppID; icon: any; theme: Theme; size?: number }
 // --- Realistic MacOS Folder (Desktop) ---
 const MacOSFolderIcon: React.FC = () => (
   <div className="w-[4rem] h-[3.2rem] flex items-center justify-center transition-transform active:scale-95 group pointer-events-none">
-    <img 
-      src={assetUrls.folders} 
+    <img
+      src={assetUrls.folders}
       alt="Folder"
       className="w-full h-full object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]"
     />
@@ -82,15 +82,15 @@ const AboutMacContent: React.FC = () => (
     <div className="w-24 h-24 mb-4 flex items-center justify-center">
        <img src={assetUrls.about} alt="Finder" className="w-full h-full object-contain drop-shadow-xl" />
     </div>
-    <h2 className="text-2xl font-bold text-gray-900 mb-1">OpenBio Dev Hub</h2>
-    <p className="text-gray-500 text-xs mb-8 font-medium">Version 14.2.1 (Web Build)</p>
-    
+    <h2 className="text-2xl font-bold text-gray-900 mb-1">BioHub Dev Environment</h2>
+    <p className="text-gray-500 text-xs mb-8 font-medium">Version 1.0.5 (CunliangOS Build)</p>
+
     <div className="flex flex-col gap-1.5 text-[11px] text-gray-600 mb-8 bg-white/50 p-4 rounded-lg border border-gray-200/50 w-full max-w-[280px]">
-       <div className="flex justify-between w-full"><span className="font-semibold text-right text-gray-500">Chip</span> <span className="text-gray-900">OpenBio-M1 Virtual</span></div>
+       <div className="flex justify-between w-full"><span className="font-semibold text-right text-gray-500">Chip</span> <span className="text-gray-900">BioHub-M1 Virtual</span></div>
        <div className="flex justify-between w-full"><span className="font-semibold text-right text-gray-500">Memory</span> <span className="text-gray-900">16 GB Unified</span></div>
        <div className="flex justify-between w-full"><span className="font-semibold text-right text-gray-500">Startup</span> <span className="text-gray-900">Macintosh HD</span></div>
     </div>
-    
+
     <div className="flex gap-3">
        <button className="px-4 py-1 bg-white border border-gray-300 rounded-[4px] shadow-sm text-[12px] text-gray-700 font-medium active:bg-gray-100 hover:bg-gray-50 transition-colors">More Info...</button>
        <button className="px-4 py-1 bg-white border border-gray-300 rounded-[4px] shadow-sm text-[12px] text-gray-700 font-medium active:bg-gray-100 hover:bg-gray-50 transition-colors">Storage Report...</button>
@@ -134,19 +134,19 @@ const Desktop: React.FC<DesktopProps> = ({ onLock, initialTheme }) => {
   const [activeWindowId, setActiveWindowId] = useState<AppID | null>(null);
   const [nextZIndex, setNextZIndex] = useState(10);
   const [currentTime, setCurrentTime] = useState(new Date());
-  
+
   // New States
   const [wallpaper, setWallpaper] = useState("https://4kwallpapers.com/images/wallpapers/macos-big-sur-apple-layers-fluidic-colorful-wwdc-2020-5120x2880-1455.jpg");
   const [isMobile, setIsMobile] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
   const [powerOff, setPowerOff] = useState(false);
   const [hasPoweredOff, setHasPoweredOff] = useState(false);
-  
+
   // Existing States
   const [isSpotlightOpen, setIsSpotlightOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [isAsleep, setIsAsleep] = useState(false);
-  
+
   // Ref for the main desktop area (excluding top bar)
   const desktopRef = useRef<HTMLDivElement>(null);
 
@@ -213,23 +213,23 @@ const Desktop: React.FC<DesktopProps> = ({ onLock, initialTheme }) => {
       focusWindow(appId);
       return;
     }
-    
+
     const app = APPS[appId];
-    
+
     const desktopRect = desktopRef.current?.getBoundingClientRect();
     const availableWidth = desktopRect?.width || window.innerWidth;
     const availableHeight = desktopRect?.height || window.innerHeight;
-    
-    const margin = 20; 
-    const dockBuffer = theme === 'linux' ? 50 : 120; 
-    
+
+    const margin = 20;
+    const dockBuffer = theme === 'linux' ? 50 : 120;
+
     const maxWidth = availableWidth - margin * 2;
     const maxHeight = availableHeight - dockBuffer;
-    
+
     const width = Math.min(app.defaultWidth || 600, maxWidth);
     const height = Math.min(app.defaultHeight || 500, maxHeight);
-    
-    const x = Math.max(0, (availableWidth - width) / 2) + (windows.length * 20); 
+
+    const x = Math.max(0, (availableWidth - width) / 2) + (windows.length * 20);
     const y = Math.max(0, (maxHeight - height) / 2 * 0.9) + (windows.length * 20);
 
     const newWindow: WindowState = {
@@ -242,7 +242,7 @@ const Desktop: React.FC<DesktopProps> = ({ onLock, initialTheme }) => {
       size: { width, height },
       variant: variant || 'default',
     };
-    
+
     setWindows([...windows, newWindow]);
     setActiveWindowId(appId);
     setNextZIndex(prev => prev + 1);
@@ -281,8 +281,7 @@ const Desktop: React.FC<DesktopProps> = ({ onLock, initialTheme }) => {
       case 'shutdown': onLock?.(); break;
       case 'new_window': openApp('terminal'); break;
       case 'settings': openApp('settings'); break;
-      default: 
-        // Pick a random sassy message
+      default:
         const randomMsg = SASSY_MESSAGES[Math.floor(Math.random() * SASSY_MESSAGES.length)];
         showToast(randomMsg);
     }
@@ -304,7 +303,7 @@ const Desktop: React.FC<DesktopProps> = ({ onLock, initialTheme }) => {
         return {
           wrapper: 'font-mono selection:bg-green-700 selection:text-white theme-linux',
           background: 'bg-[#0f0f0f]',
-          topBar: 'hidden', 
+          topBar: 'hidden',
           dockContainer: 'mb-0 w-full',
           dock: 'bg-[#1a1a1a] border-t border-[#333] w-full px-2 py-1 flex items-center gap-2 shadow-none rounded-none justify-start overflow-x-auto',
           iconContainer: 'bg-transparent rounded-sm hover:bg-[#333] transition-colors p-1 shrink-0',
@@ -327,13 +326,13 @@ const Desktop: React.FC<DesktopProps> = ({ onLock, initialTheme }) => {
   const classes = getThemeClasses();
 
   return (
-    <div 
+    <div
       className={`h-screen w-screen relative overflow-hidden flex flex-col bg-black`}
     >
       {/* Standby Overlay (When Powered Off) */}
       <AnimatePresence>
         {powerOff && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -355,9 +354,9 @@ const Desktop: React.FC<DesktopProps> = ({ onLock, initialTheme }) => {
       </AnimatePresence>
 
       {/* Main Desktop Wrapper with CRT Animations */}
-      <div 
-        className={`flex-1 w-full h-full relative overflow-hidden flex flex-col transition-all duration-500 
-          ${classes.wrapper} 
+      <div
+        className={`flex-1 w-full h-full relative overflow-hidden flex flex-col transition-all duration-500
+          ${classes.wrapper}
           ${theme !== 'macos' ? classes.background : ''}
           ${powerOff ? 'animate-turn-off' : (hasPoweredOff ? 'animate-turn-on' : '')}
         `}
@@ -366,18 +365,18 @@ const Desktop: React.FC<DesktopProps> = ({ onLock, initialTheme }) => {
       >
         {/* Sleep Overlay */}
         {isAsleep && (
-          <div 
+          <div
             className="absolute inset-0 z-[9999] bg-black cursor-none flex items-center justify-center"
             onClick={() => setIsAsleep(false)}
           >
             <div className="animate-pulse text-white/20 font-sans text-sm">Click to wake</div>
           </div>
         )}
-        
+
         {/* Toast Notification */}
         <AnimatePresence>
           {toast && (
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: -20, x: '-50%' }}
               animate={{ opacity: 1, y: 0, x: '-50%' }}
               exit={{ opacity: 0 }}
@@ -388,19 +387,19 @@ const Desktop: React.FC<DesktopProps> = ({ onLock, initialTheme }) => {
           )}
         </AnimatePresence>
 
-        <Spotlight 
-          isOpen={isSpotlightOpen} 
-          onClose={() => setIsSpotlightOpen(false)} 
+        <Spotlight
+          isOpen={isSpotlightOpen}
+          onClose={() => setIsSpotlightOpen(false)}
           onLaunchApp={openApp}
           apps={APPS}
         />
 
         {theme === 'retro' && (
-          <div 
+          <div
             className="absolute inset-0 pointer-events-none opacity-10"
-            style={{ 
-                backgroundImage: 'linear-gradient(#2d2d2d 1px, transparent 1px), linear-gradient(90deg, #2d2d2d 1px, transparent 1px)', 
-                backgroundSize: '40px 40px' 
+            style={{
+                backgroundImage: 'linear-gradient(#2d2d2d 1px, transparent 1px), linear-gradient(90deg, #2d2d2d 1px, transparent 1px)',
+                backgroundSize: '40px 40px'
             }}
           ></div>
         )}
@@ -413,7 +412,7 @@ const Desktop: React.FC<DesktopProps> = ({ onLock, initialTheme }) => {
                 <div className="flex items-center gap-1 h-full">
                    {/* Apple Menu */}
                    <div className="relative h-full flex items-center">
-                      <button 
+                      <button
                           className={`cursor-default px-3 py-1 rounded-[4px] hover:bg-white/10 transition-colors ${activeMenu === 'apple' ? 'bg-white/10' : ''}`}
                           onClick={() => setActiveMenu(activeMenu === 'apple' ? null : 'apple')}
                       >
@@ -423,7 +422,7 @@ const Desktop: React.FC<DesktopProps> = ({ onLock, initialTheme }) => {
                         <div className="absolute top-[28px] left-0 min-w-[240px] bg-white/70 backdrop-blur-2xl border-[0.5px] border-gray-200/50 shadow-[0_10px_40px_rgba(0,0,0,0.2)] rounded-lg py-1.5 flex flex-col z-[99999]">
                            {[{ label: 'About This Mac', action: 'about_mac' }, { type: 'separator' }, { label: 'System Settings...', action: 'settings' }, { type: 'separator' }, { label: 'Sleep', action: 'sleep' }, { label: 'Restart...', action: 'restart' }, { label: 'Log Out...', action: 'shutdown' }].map((item: any, idx) => (
                              item.type === 'separator' ? <div key={idx} className="h-[1px] bg-black/5 my-1 mx-3" /> :
-                             <div key={idx} 
+                             <div key={idx}
                                   onClick={() => handleMenuAction(item.action)}
                                   className={`px-3 py-1 mx-1 rounded-[4px] flex justify-between items-center text-[13px] text-black hover:bg-blue-500 hover:text-white cursor-default transition-colors`}>
                                  <span>{item.label}</span>
@@ -432,14 +431,14 @@ const Desktop: React.FC<DesktopProps> = ({ onLock, initialTheme }) => {
                         </div>
                       )}
                    </div>
-                   
+
                    <span className="font-bold cursor-default hidden sm:block drop-shadow-sm tracking-wide px-2 text-[13px]">Finder</span>
 
                    {/* Interactive Menus */}
                    <div className="hidden md:flex font-medium opacity-100 h-full items-center">
                       {Object.keys(TOP_BAR_MENUS).map(menuName => (
                         <div key={menuName} className="relative h-full flex items-center">
-                          <button 
+                          <button
                             onClick={() => setActiveMenu(activeMenu === menuName ? null : menuName)}
                             className={`px-3 py-0.5 mx-0.5 h-[20px] rounded-[4px] hover:bg-white/10 transition-colors cursor-default drop-shadow-sm flex items-center ${activeMenu === menuName ? 'bg-white/10' : ''}`}
                           >
@@ -449,7 +448,7 @@ const Desktop: React.FC<DesktopProps> = ({ onLock, initialTheme }) => {
                           {activeMenu === menuName && (
                             <div className="absolute top-[28px] left-0 min-w-[220px] bg-white/70 backdrop-blur-2xl border-[0.5px] border-gray-200/50 shadow-[0_10px_40px_rgba(0,0,0,0.2)] rounded-lg py-1.5 flex flex-col z-[99999]">
                                {TOP_BAR_MENUS[menuName].map((item, idx) => (
-                                 <div key={idx} 
+                                 <div key={idx}
                                       className="px-3 py-1 mx-1 rounded-[4px] text-[13px] text-black hover:bg-blue-500 hover:text-white cursor-default transition-colors"
                                       onClick={() => handleMenuAction(item)}
                                   >
@@ -463,10 +462,10 @@ const Desktop: React.FC<DesktopProps> = ({ onLock, initialTheme }) => {
                    </div>
                 </div>
               ) : (
-                 <span className={`font-bold tracking-wider ${theme === 'retro' ? 'text-black' : 'text-white'}`}>OpenBio Dev Hub</span>
+                 <span className={`font-bold tracking-wider ${theme === 'retro' ? 'text-black' : 'text-white'}`}>BioHub Dev Hub</span>
               )}
             </div>
-            
+
             {/* Right Status Bar */}
             <div className="flex items-center gap-4">
               {theme === 'macos' && (
@@ -489,9 +488,9 @@ const Desktop: React.FC<DesktopProps> = ({ onLock, initialTheme }) => {
                     </div>
                     {/* Fixed Button Container to prevent resizing */}
                     <div className="w-6 h-6 flex items-center justify-center">
-                      <button 
+                      <button
                         onClick={() => setPowerOff(true)}
-                        className="flex items-center justify-center w-full h-full hover:text-red-600 transition-colors" 
+                        className="flex items-center justify-center w-full h-full hover:text-red-600 transition-colors"
                         title="Turn Off"
                       >
                         <Power size={20} strokeWidth={2.5} />
