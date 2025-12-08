@@ -1,42 +1,51 @@
 import path from 'path';
-import { defineConfig, loadEnv } from 'vite';
+import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-export default defineConfig(({ mode }) => {
-    const env = loadEnv(mode, '.', '');
-    
-    // Smart base path detection
-    let base = '/';
-    
-    // Only use custom base path for GitHub Pages
-    if (mode === 'production' && env.VITE_DEPLOY_TARGET === 'github') {
-      base = env.VITE_BASE_PATH || '/Open-Bio-Template/';
+export default defineConfig({
+  // Vercel 部署时使用根路径
+  base: '/',
+
+  server: {
+    port: 3000,
+    host: '0.0.0.0',
+  },
+
+  plugins: [react()],
+
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, '.'),
     }
-    
-    return {
-      base: base,
-      server: {
-        port: 3000,
-        host: '0.0.0.0',
-      },
-      plugins: [react()],
-      resolve: {
-        alias: {
-          '@': path.resolve(__dirname, '.'),
-        }
-      },
-      build: {
-        // Ensure assets are properly bundled
-        assetsInlineLimit: 0,
-        rollupOptions: {
-          output: {
-            // Better code splitting for deployment
-            manualChunks: {
-              'react-vendor': ['react', 'react-dom'],
-              'framer-motion': ['framer-motion'],
-            }
-          }
-        }
+  },
+
+  build: {
+    // 确保资源正确打包
+    assetsInlineLimit: 0,
+    outDir: 'dist',
+    emptyOutDir: true,
+
+    rollupOptions: {
+      output: {
+        // 更好的代码分割
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom'],
+          'framer-motion': ['framer-motion'],
+        },
+
+        // 确保资源文件名一致
+        assetFileNames: 'assets/[name]-[hash][extname]',
+        chunkFileNames: 'assets/[name]-[hash].js',
+        entryFileNames: 'assets/[name]-[hash].js',
       }
-    };
+    },
+
+    // 生成 source map 用于调试
+    sourcemap: false,
+  },
+
+  // 优化依赖预构建
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'framer-motion', 'lucide-react']
+  }
 });
