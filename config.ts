@@ -4,7 +4,7 @@ export const userProfile = {
   name: "Cunliang Yu",
   role: "Freelance Full-Stack Developer / ML Engineer",
   prev_role: "Digital Developer @ Redsteps | Researcher @ AIML",
-  avatar_url: "https://i.postimg.cc/8JLVQ2s1/avatar.jpg",
+  avatar_url: "https://ui-avatars.com/api/?name=User&background=0D8ABC&color=fff&size=256",
   bio: "Full-stack developer with a foundation in machine learning, cloud deployment, and scalable web systems.",
   story: `I have a cross-disciplinary background in web development, machine learning research, and data-driven product design.
 My dedication includes creating performant, scalable and intelligent digital experiences, combining my engineering and
