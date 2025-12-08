@@ -1,15 +1,13 @@
-
 import React, { useState } from 'react';
 import { User, MapPin, Coffee, Heart, Github, Twitter, Linkedin, Code, Zap, Cpu, Terminal, Briefcase, LayoutTemplate, PenTool, Sparkles, Layers } from 'lucide-react';
 import { Theme } from '../../types';
 import { motion, AnimatePresence } from 'framer-motion';
+import { userProfile } from '../../config';
 
 interface AboutAppProps {
   theme?: Theme;
   isMobile?: boolean;
 }
-
-import { userProfile } from '../../config';
 
 const AVATAR_URL = userProfile.avatar_url;
 
@@ -30,7 +28,7 @@ const NavItem = ({ id, label, icon: Icon, activeTab, setActiveTab }: any) => (
   </button>
 );
 
-const AboutApp: React.FC<AboutAppProps> = ({ theme, isMobile = false }) => {
+const AboutApp: React.FC<AboutAppProps> = ({ theme = 'macos', isMobile = false }) => {
   const [activeTab, setActiveTab] = useState<'profile' | 'stack' | 'focus' | 'experience'>('profile');
   
   // --- Linux Theme (JSON / Code View) ---
@@ -38,7 +36,6 @@ const AboutApp: React.FC<AboutAppProps> = ({ theme, isMobile = false }) => {
     const profileData = {
       user: userProfile.name,
       role: userProfile.role,
-      prev_role: userProfile.prev_role,
       bio: userProfile.bio,
       story: userProfile.story,
       status: userProfile.status,
@@ -67,14 +64,12 @@ const AboutApp: React.FC<AboutAppProps> = ({ theme, isMobile = false }) => {
             <div key={key} className="pl-4 hover:bg-white/5 py-0.5">
               <span className="text-red-400">"{key}"</span>: {
                 Array.isArray(value) ? (
-                  // Array Handling
                   <span>
-                    <span className="text-yellow-300">['</span>
+                    <span className="text-yellow-300">[</span>
                     <div className="pl-4 border-l border-gray-700 ml-1">
                       {value.map((v, i) => (
                         <div key={i}>
                           {typeof v === 'object' ? (
-                             // Object inside Array (for AI/PM focus)
                              <span>
                                <span className="text-yellow-300">{'{'}</span>
                                {Object.entries(v).map(([k, val], j) => (
@@ -89,27 +84,25 @@ const AboutApp: React.FC<AboutAppProps> = ({ theme, isMobile = false }) => {
                         </div>
                       ))}
                     </div>
-                    <span className="text-yellow-300">']</span>,
+                    <span className="text-yellow-300">]</span>,
                   </span>
                 ) : typeof value === 'object' ? (
-                  // Object Handling
                   <span>
                      <span className="text-yellow-300">{'{'}</span>
                      <div className="pl-4 border-l border-gray-700 ml-1">
                         {Object.entries(value).map(([subKey, subVal]) => (
                             <div key={subKey}>
-                                <span className="text-orange-300">"{subKey}"</span>: <span className="text-yellow-300">['</span>
+                                <span className="text-orange-300">"{subKey}"</span>: <span className="text-yellow-300">[</span>
                                 {(subVal as string[]).map((v, i) => (
                                     <span key={i}><span className="text-green-300">"{v}"</span>{i < (subVal as string[]).length - 1 && ", "}</span>
                                 ))}
-                                <span className="text-yellow-300">']</span>,
+                                <span className="text-yellow-300">]</span>,
                             </div>
                         ))}
                      </div>
                      <span className="text-yellow-300">{'}'}</span>,
                   </span>
                 ) : (
-                  // String Handling
                   <span><span className="text-green-300">"{value as string}"</span>,</span>
                 )}
             </div>
@@ -386,21 +379,15 @@ const AboutApp: React.FC<AboutAppProps> = ({ theme, isMobile = false }) => {
 
   // --- Retro Theme (Handwritten / Indie) ---
   return (
-    <div className="space-y-6 text-ink p-6 font-hand">
+    <div className="space-y-6 text-ink p-6 font-hand overflow-y-auto h-full">
       <div className="flex flex-col md:flex-row gap-8 items-start">
-        {/* Polaroid Style Image - No Grayscale */}
+        {/* Polaroid Style Image */}
         <div className="relative group shrink-0">
           <div className="bg-white p-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] border-2 border-ink -rotate-2 w-max">
             <div className="w-32 h-32 border border-ink bg-gray-200 overflow-hidden">
                 <img src={AVATAR_URL} alt="Avatar" className="w-full h-full object-cover" />
             </div>
             <p className="text-center font-bold mt-2 text-sm">Me.png</p>
-          </div>
-          {/* Hand drawn arrow SVG */}
-          <div className="absolute -right-8 top-10 w-12 hidden md:block">
-            <svg viewBox="0 0 100 50" fill="none" stroke="currentColor" strokeWidth="3" className="text-ink opacity-80 rotate-12">
-               <path d="M0,25 C20,10 50,40 90,25 M80,20 L95,25 L85,35" />
-            </svg>
           </div>
         </div>
 
@@ -410,7 +397,6 @@ const AboutApp: React.FC<AboutAppProps> = ({ theme, isMobile = false }) => {
             {userProfile.role}
           </p>
           
-          {/* My Story - Handwritten Note Style */}
           <div className="relative bg-white/50 border-l-4 border-retro-blue pl-4 py-2 italic text-lg mb-4">
              "{userProfile.story}"
           </div>
@@ -424,16 +410,15 @@ const AboutApp: React.FC<AboutAppProps> = ({ theme, isMobile = false }) => {
       <div className="border-t-2 border-dashed border-ink/30 my-2"></div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* Current Status Checklist */}
         <div className="bg-white p-4 border-2 border-ink shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] rounded-sm">
             <h3 className="text-xl font-bold mb-3 flex items-center gap-2 underline decoration-retro-green">
                Current Status
             </h3>
             <ul className="space-y-2 text-lg">
                 {userProfile.status.map((s, i) => (
-                  <li key={i} className="flex items-center gap-3">
-                    <div className="w-5 h-5 border-2 border-ink flex items-center justify-center bg-retro-green text-white font-bold text-xs">{i === 0 ? '✓' : i === 2 ? '~' : ''}</div> 
-                    {s}
+                  <li key={i} className="flex items-start gap-3">
+                    <div className="w-5 h-5 border-2 border-ink flex items-center justify-center bg-retro-green text-white font-bold text-xs shrink-0 mt-1">{i === 0 ? '✓' : ''}</div> 
+                    <span>{s}</span>
                   </li>
                 ))}
             </ul>
@@ -456,14 +441,13 @@ const AboutApp: React.FC<AboutAppProps> = ({ theme, isMobile = false }) => {
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 text-lg">
                 {userProfile.focus_areas.map((f, i) => (
-                  <div key={i} className="flex items-start gap-2"><span>★</span> {f.title}</div>
+                  <div key={i} className="flex items-start gap-2"><span>★</span> <span>{f.title}</span></div>
                 ))}
             </div>
         </div>
         
-        {/* Expanded PM Experience Post-it */}
         <div className="bg-yellow-200 p-5 border-2 border-ink shadow-[4px_4px_0px_0px_rgba(0,0,0,0.5)] rotate-1 md:col-span-2 relative mt-2">
-             <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-32 h-6 bg-yellow-100/50 rotate-1 border-l border-r border-white/0"></div>
+             <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-32 h-6 bg-yellow-100/50 rotate-1"></div>
              <h3 className="text-2xl font-bold mb-4 text-center border-b-2 border-ink/10 pb-2">Experience Highlights</h3>
              
              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
