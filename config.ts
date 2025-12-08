@@ -4,10 +4,10 @@ export const userProfile = {
   name: "Cunliang Yu",
   role: "Freelance Full-Stack Developer / ML Engineer",
   prev_role: "Digital Developer @ Redsteps | Researcher @ AIML",
-  avatar_url: "https://postimg.cc/8JLVQ2s1",
+  avatar_url: "https://i.postimg.cc/8JLVQ2s1/avatar.jpg",
   bio: "Full-stack developer with a foundation in machine learning, cloud deployment, and scalable web systems.",
   story: `I have a cross-disciplinary background in web development, machine learning research, and data-driven product design.
-My dedication includes creating performant, scalable and intelligent digital experiences, combining my engineering and 
+My dedication includes creating performant, scalable and intelligent digital experiences, combining my engineering and
 research mindset to solve real-world problems with clean code and thoughtful design.`,
   quote: "Build systems that feel simple, but run with intelligence.",
   email: "cunliangyu19@gmail.com",
@@ -43,7 +43,7 @@ export const skills = [
   },
   {
     title: "Tools",
-    items: ["Git", "CPanel", "Google Analytics", "Vite", "Docker"]
+    items: ["Git", "CPanel", "Google Analytics", "Vite", "Docker", "AWS"]
   },
   {
     title: "Specialties",
@@ -68,9 +68,9 @@ export const experiences = [
   {
     title: "Research Assistant",
     company: "Australian Institute for Machine Learning",
-    period: "Sept 2021 – Jun 2022",
+    period: "June 2021 – Jun 2022",
     description: [
-      "Built a complete competition platform for visual place recognition benchmarking.",
+      "Built a full-stack competition platform for visual place recognition benchmarking.",
       "Automated submission scoring, ranking visualization, and dataset processing.",
       "Designed React-based front-end + Django backend with RESTful pipelines.",
       "Unified data flows improved collaboration speed for 10+ research groups."
@@ -82,7 +82,7 @@ export const experiences = [
 export const projects = [
   {
     title: "Place Recognition Challenge Platform",
-    description: "A full end-to-end competition platform for research teams to upload, evaluate, and benchmark visual place recognition algorithms.",
+    description: "An end-to-end competition platform for research teams to upload, evaluate, and benchmark visual place recognition algorithms.",
     tags: ["Django", "React", "Machine Learning", "Full-Stack"],
     link: "https://github.com/freddie-yu/Place_Recognition_Challenge_Platform",
     color: "bg-blue-100"
