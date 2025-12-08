@@ -26,7 +26,7 @@ const ProjectsApp: React.FC<ProjectsAppProps> = ({ theme = 'retro' }) => {
     return (
       <div className="h-full bg-[#1e1e1e] text-gray-300 font-mono p-4 overflow-y-auto selection:bg-green-900 selection:text-white">
         <div className="mb-6 border-b border-gray-700 pb-2">
-           <span className="text-green-500">guest@openbio-template:~$</span> <span className="text-white">apt list --installed | grep "openbio-template-projects"</span>
+           <span className="text-green-500">guest@cunliangbio:~$</span> <span className="text-white">apt list --installed | grep "cunliangbio-projects"</span>
         </div>
         
         <div className="space-y-4">
