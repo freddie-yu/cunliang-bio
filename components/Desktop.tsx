@@ -82,11 +82,11 @@ const AboutMacContent: React.FC = () => (
     <div className="w-24 h-24 mb-4 flex items-center justify-center">
        <img src={assetUrls.about} alt="Finder" className="w-full h-full object-contain drop-shadow-xl" />
     </div>
-    <h2 className="text-2xl font-bold text-gray-900 mb-1">BioHub Dev Environment</h2>
+    <h2 className="text-2xl font-bold text-gray-900 mb-1">CunliangBio Dev Environment</h2>
     <p className="text-gray-500 text-xs mb-8 font-medium">Version 1.0.5 (CunliangOS Build)</p>
 
     <div className="flex flex-col gap-1.5 text-[11px] text-gray-600 mb-8 bg-white/50 p-4 rounded-lg border border-gray-200/50 w-full max-w-[280px]">
-       <div className="flex justify-between w-full"><span className="font-semibold text-right text-gray-500">Chip</span> <span className="text-gray-900">BioHub-M1 Virtual</span></div>
+       <div className="flex justify-between w-full"><span className="font-semibold text-right text-gray-500">Chip</span> <span className="text-gray-900">CunliangBio-M1 Virtual</span></div>
        <div className="flex justify-between w-full"><span className="font-semibold text-right text-gray-500">Memory</span> <span className="text-gray-900">16 GB Unified</span></div>
        <div className="flex justify-between w-full"><span className="font-semibold text-right text-gray-500">Startup</span> <span className="text-gray-900">Macintosh HD</span></div>
     </div>
@@ -462,7 +462,7 @@ const Desktop: React.FC<DesktopProps> = ({ onLock, initialTheme }) => {
                    </div>
                 </div>
               ) : (
-                 <span className={`font-bold tracking-wider ${theme === 'retro' ? 'text-black' : 'text-white'}`}>BioHub Dev Hub</span>
+                 <span className={`font-bold tracking-wider ${theme === 'retro' ? 'text-black' : 'text-white'}`}>CunliangBio Dev Hub</span>
               )}
             </div>
 
