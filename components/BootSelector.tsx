@@ -1,6 +1,6 @@
 import React from 'react';
 import { Theme } from '../types';
-import { Command, Terminal, Monitor } from 'lucide-react';
+import { Command, Terminal } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 interface BootSelectorProps {
@@ -79,7 +79,7 @@ const BootSelector: React.FC<BootSelectorProps> = ({ onSelect }) => {
       </div>
 
       <div className="mt-8 md:mt-16 font-mono text-gray-600 text-[10px] md:text-xs">
-        v1.0.4-stable
+        v1.0.5-stable
       </div>
     </div>
   );
