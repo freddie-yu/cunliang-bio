@@ -32,15 +32,15 @@ const fileSystem: Record<string, FileSystemItem> = {
         type: 'file', 
         content: '# User (Dev)\n\n> Developer building cool things.\n\nWelcome to my terminal.' 
       },
-      { name: 'contact.info', type: 'file', content: 'Email: hello@example.com\nGithub: github.com/chenyibai9527/Open-Bio-Template' },
-      { name: '.bashrc', type: 'file', content: 'export PATH=$PATH:/bin/openbio\nalias ll="ls -la"' },
+      { name: 'contact.info', type: 'file', content: 'Email: cuuunliangyu19@gmail.com\nGithub: https://github.com/freddie-yu/cunliang-bio' },
+      { name: '.bashrc', type: 'file', content: 'export PATH=$PATH:/bin/cunliangbio\nalias ll="ls -la"' },
     ]
   }
 };
 
 const TerminalApp: React.FC<TerminalAppProps> = ({ onLaunchApp }) => {
   const [history, setHistory] = useState<Array<{type: 'in' | 'out' | 'info', content: React.ReactNode}>>([
-    { type: 'info', content: 'Welcome to OpenBioOS Kernel v1.0.0 (tty1)' },
+    { type: 'info', content: 'Welcome to CunliangOS Kernel v1.0.0 (tty1)' },
     { type: 'info', content: 'Type "help" for a list of available commands.' }
   ]);
   const [input, setInput] = useState('');
@@ -74,7 +74,7 @@ const TerminalApp: React.FC<TerminalAppProps> = ({ onLaunchApp }) => {
 
     const columns = Math.floor(canvas.width / 20);
     const drops: number[] = Array(columns).fill(1);
-    const chars = "01OPENBIOCODE";
+    const chars = "01CUNLIANGBIOCODE";
 
     const draw = () => {
        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
@@ -326,10 +326,10 @@ const TerminalApp: React.FC<TerminalAppProps> = ({ onLaunchApp }) => {
        |_|`}
                </div>
                <div className="flex-1">
-                  <div className="font-bold text-blue-400 mb-1">guest@openbio.dev</div>
+                  <div className="font-bold text-blue-400 mb-1">guest@cunliangbio.dev</div>
                   <div className="border-b border-gray-600 mb-2 w-full max-w-[200px]"></div>
                   <div className="grid grid-cols-[80px_1fr] gap-x-2">
-                    <span className="text-yellow-400 font-bold">OS</span> <span>OpenBio WebOS v1.0</span>
+                    <span className="text-yellow-400 font-bold">OS</span> <span>Cunliang WebOS v1.0</span>
                     <span className="text-yellow-400 font-bold">Host</span> <span>{window.location.hostname}</span>
                     <span className="text-yellow-400 font-bold">Uptime</span> <span>{getUptime()}</span>
                     <span className="text-yellow-400 font-bold">Packages</span> <span>{projectCount} (dpkg)</span>
