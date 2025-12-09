@@ -245,11 +245,6 @@ Found a bug? Want to add a feature? Cool.
 
 ---
 
-## 📄 License
-
-MIT License 
-
----
 
 ## 🙏 Acknowledgments
 
