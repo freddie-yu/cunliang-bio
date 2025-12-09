@@ -182,7 +182,7 @@ const TerminalApp: React.FC<TerminalAppProps> = ({ onLaunchApp }) => {
       
       const promptPath = currentPath.length === 0 ? '~' : `~/${currentPath.join('/')}`;
       
-      setHistory(prev => [...prev, { type: 'in', content: `guest@openbio:${promptPath}$ ${input}` }]);
+      setHistory(prev => [...prev, { type: 'in', content: `guest@cunliangbio:${promptPath}$ ${input}` }]);
       setCmdHistory(prev => [...prev, cmdTrimmed]);
       setHistoryIndex(-1);
       setInput('');
@@ -378,7 +378,7 @@ const TerminalApp: React.FC<TerminalAppProps> = ({ onLaunchApp }) => {
       ))}
       <div className="flex items-center">
         <span className="text-green-400 mr-2 whitespace-nowrap">
-          guest@openbio:{currentPath.length === 0 ? '~' : `~/${currentPath.join('/')}`}$
+          guest@cunliangbio:{currentPath.length === 0 ? '~' : `~/${currentPath.join('/')}`}$
         </span>
         <input 
           ref={inputRef}
