@@ -119,7 +119,7 @@ const ContactApp: React.FC<ContactAppProps> = ({ theme = 'macos' }) => {
                      value={message}
                      onChange={e => setMessage(e.target.value)}
                      className="bg-[url('https://www.transparenttextures.com/patterns/lined-paper.png')] bg-white/50 border-2 border-ink rounded-sm p-3 text-xl min-h-[150px] outline-none focus:shadow-[4px_4px_0px_0px_rgba(38,139,210,1)] transition-shadow resize-none leading-loose"
-                     placeholder="Dear Yibai..."
+                     placeholder="Dear Cunliang..."
                    />
                 </div>
 
@@ -177,7 +177,7 @@ const ContactApp: React.FC<ContactAppProps> = ({ theme = 'macos' }) => {
          <div className="flex items-center px-4 py-2 border-b border-gray-100 shrink-0">
             <span className="text-gray-500 text-sm w-16 text-right mr-3">To:</span>
             <div className="flex items-center gap-2 bg-blue-100 text-blue-700 px-2 py-0.5 rounded-md text-sm cursor-pointer group relative" onClick={copyEmail}>
-               <span>Yibai</span>
+               <span>Cunliang</span>
                <span className="text-blue-400 text-xs hidden sm:inline">&lt;{EMAIL}&gt;</span>
                {copied ? <Check size={12} /> : <Copy size={12} className="opacity-0 group-hover:opacity-100 transition-opacity"/>}
             </div>
@@ -199,7 +199,7 @@ const ContactApp: React.FC<ContactAppProps> = ({ theme = 'macos' }) => {
             value={message}
             onChange={e => setMessage(e.target.value)}
             className="flex-1 p-4 outline-none resize-none text-gray-800 leading-relaxed text-sm selection:bg-blue-100"
-            placeholder="Hi Yibai, I'd like to discuss..."
+            placeholder="Hi Cunliang, I'd like to discuss..."
          />
 
          {/* Footer Signature */}
@@ -215,7 +215,7 @@ const ContactApp: React.FC<ContactAppProps> = ({ theme = 'macos' }) => {
                </div>
             </div>
             <div className="italic opacity-70">
-               Sent from open-bio-template
+               Sent from cunliangbio
             </div>
          </div>
       </div>
