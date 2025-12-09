@@ -25,9 +25,9 @@ const BOOT_LOGS = [
   "[  OK  ] Reached target Graphical Interface.",
   "         Starting CunliangOS v1.0.0...",
   "[  OK  ] Initialized Virtual File System.",
-  "[  OK  ] Loaded Kernel Module: biohub_core.",
+  "[  OK  ] Loaded Kernel Module: cunliangbio_core.",
   "[  OK  ] Loaded Kernel Module: react_renderer.",
-  "         Welcome to BioHub Dev Environment.",
+  "         Welcome to CunliangBio Dev Environment.",
 ];
 
 const BootSequence: React.FC<BootSequenceProps> = ({ theme, onComplete }) => {
@@ -66,7 +66,7 @@ const BootSequence: React.FC<BootSequenceProps> = ({ theme, onComplete }) => {
       }, interval);
 
       return () => clearInterval(timer);
-    } 
+    }
     else if (theme === 'linux') {
        let i = 0;
        const interval = setInterval(() => {
@@ -75,7 +75,7 @@ const BootSequence: React.FC<BootSequenceProps> = ({ theme, onComplete }) => {
             setTimeout(onComplete, 800);
             return;
          }
-         
+
          const timestamp = (Math.random() * 2 + i * 0.1).toFixed(4).padStart(7, ' ');
          setLogs(prev => [...prev, `[${timestamp}] ${BOOT_LOGS[i]}`]);
          i++;
@@ -95,10 +95,10 @@ const BootSequence: React.FC<BootSequenceProps> = ({ theme, onComplete }) => {
             <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 52.3-11.4 69.5-34.3z"/>
           </svg>
         </div>
-        
+
         {/* Progress Bar */}
         <div className="w-[200px] h-[6px] bg-[#333] rounded-full overflow-hidden">
-          <div 
+          <div
             className="h-full bg-white transition-all duration-75 ease-linear rounded-full"
             style={{ width: `${progress}%` }}
           />
@@ -110,7 +110,7 @@ const BootSequence: React.FC<BootSequenceProps> = ({ theme, onComplete }) => {
   // Render Linux Boot Screen
   if (theme === 'linux') {
     return (
-      <div 
+      <div
         className="h-screen w-screen bg-black text-gray-400 font-mono text-xs p-2 overflow-hidden flex flex-col justify-end"
         onClick={onComplete}
       >
@@ -120,7 +120,7 @@ const BootSequence: React.FC<BootSequenceProps> = ({ theme, onComplete }) => {
                {log.includes("[  OK  ]") ? (
                  <>
                    <span className="text-green-500/50">{log.substring(0, 9)}</span>
-                   [ <span className="text-green-500 font-bold">OK</span> ] 
+                   [ <span className="text-green-500 font-bold">OK</span> ]
                    {log.split("[  OK  ]")[1]}
                  </>
                ) : (
