@@ -23,23 +23,23 @@ const TerminalLock: React.FC<TerminalLockProps> = ({ onUnlock }) => {
     // Initial Boot Sequence Animation
     const bootLines = [
       "BIOS Date 01/15/24 14:23:55 Ver: 1.0.2",
-      "CPU: BioHub-Core-X4 @ 4.20GHz",
+      "CPU: CunliangBio-Core-X4 @ 4.20GHz",
       "Memory Test: 65536K OK",
-      "Detecting Primary Master ... BIOHUB_DRIVE_01",
+      "Detecting Primary Master ... CUNLIANGBIO_DRIVE_01",
       "Detecting Primary Slave ... None",
       "Loading kernel modules...",
       "[OK] Mounted root filesystem.",
       "[OK] Started Network Manager.",
       "[OK] Started Secure Gateway.",
       " ",
-      "Welcome to BioHub Dev Environment v1.0",
+      "Welcome to CunliangBio Dev Environment v1.0",
       "Login required to access the mainframe.",
       " ",
     ];
 
     const timeouts: NodeJS.Timeout[] = [];
     let delay = 0;
-    
+
     bootLines.forEach((line, index) => {
       delay += Math.random() * 300 + 50;
       const timeout = setTimeout(() => {
@@ -47,7 +47,7 @@ const TerminalLock: React.FC<TerminalLockProps> = ({ onUnlock }) => {
           console.log(`Adding line ${index}: ${line}`);
           return [...prev, line];
         });
-        
+
         if (index === bootLines.length - 1) {
           console.log('Boot sequence completed successfully');
           setBootSequence(false);
@@ -72,8 +72,8 @@ const TerminalLock: React.FC<TerminalLockProps> = ({ onUnlock }) => {
   const handleCommand = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       const command = input.trim();
-      const newHistory = [...history, `guest@biohub-gateway:~$ ${command}`];
-      
+      const newHistory = [...history, `guest@cunliangbio-gateway:~$ ${command}`];
+
       if (command === 'awesome') {
         newHistory.push("Access Granted. Initializing GUI Environment...");
         setHistory(newHistory);
@@ -96,16 +96,16 @@ const TerminalLock: React.FC<TerminalLockProps> = ({ onUnlock }) => {
   };
 
   return (
-    <div 
-      className="h-screen w-screen bg-black text-[#33ff33] font-mono flex flex-col items-center justify-center relative overflow-hidden" 
+    <div
+      className="h-screen w-screen bg-black text-[#33ff33] font-mono flex flex-col items-center justify-center relative overflow-hidden"
       onClick={() => !bootSequence && inputRef.current?.focus()}
     >
       {/* CRT Scanline Overlay */}
       <div className="absolute inset-0 z-50 crt-overlay pointer-events-none animate-crt-flicker"></div>
-      
+
       {/* Screen Container */}
       <div className="w-full h-full p-4 md:p-10 relative z-10 flex flex-col">
-        
+
         {/* Content Area */}
         <div className="flex-1 overflow-y-auto max-w-4xl mx-auto w-full text-lg md:text-xl leading-relaxed text-glow">
           {history.map((line, i) => (
@@ -122,7 +122,7 @@ const TerminalLock: React.FC<TerminalLockProps> = ({ onUnlock }) => {
 
           {!bootSequence && (
             <div className="flex items-center mt-2">
-              <span className="text-[#33ff33] mr-2">guest@biohub-gateway:~$</span>
+              <span className="text-[#33ff33] mr-2">guest@cunliangbio-gateway:~$</span>
               <div className="relative flex-1">
                 <input
                   ref={inputRef}
