@@ -11,21 +11,21 @@ const BootSelector: React.FC<BootSelectorProps> = ({ onSelect }) => {
   return (
     <div className="h-screen w-screen bg-gray-900 text-white flex flex-col items-center justify-center p-4 md:p-6 relative overflow-hidden">
       {/* Background Grid */}
-      <div 
+      <div
         className="absolute inset-0 pointer-events-none opacity-20"
-        style={{ 
-            backgroundImage: 'linear-gradient(#333 1px, transparent 1px), linear-gradient(90deg, #333 1px, transparent 1px)', 
-            backgroundSize: '40px 40px' 
+        style={{
+            backgroundImage: 'linear-gradient(#333 1px, transparent 1px), linear-gradient(90deg, #333 1px, transparent 1px)',
+            backgroundSize: '40px 40px'
         }}
       ></div>
 
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         className="text-center mb-8 md:mb-12 z-10"
       >
         <h1 className="text-2xl md:text-5xl font-mono font-bold mb-2 md:mb-4 tracking-tight">SYSTEM BOOTLOADER</h1>
-        <p className="text-gray-400 font-mono text-xs md:text-base">Select your operating environment</p>
+        <p className="text-gray-400 font-mono text-xs md:text-base">Select Your Operating Environment</p>
       </motion.div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 z-10 max-w-5xl w-full">
@@ -41,7 +41,7 @@ const BootSelector: React.FC<BootSelectorProps> = ({ onSelect }) => {
           </div>
           <div>
              <h3 className="font-hand font-bold text-xl md:text-2xl mb-1">Retro OS</h3>
-             <p className="font-hand text-sm md:text-lg text-gray-600">Hand-drawn indie vibe</p>
+             <p className="font-hand text-sm md:text-lg text-gray-600">Hand-drawn Indie Vibe</p>
           </div>
         </motion.button>
 
