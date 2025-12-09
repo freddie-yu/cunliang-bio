@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { AppID, AppConfig, WindowState, Theme } from '../types';
@@ -462,7 +461,7 @@ const Desktop: React.FC<DesktopProps> = ({ onLock, initialTheme }) => {
                    </div>
                 </div>
               ) : (
-                 <span className={`font-bold tracking-wider ${theme === 'retro' ? 'text-black' : 'text-white'}`}>CunliangBio Dev Hub</span>
+                 <span className={`font-bold tracking-wider ${theme === 'retro' ? 'text-black' : 'text-white'}`}>CunliangBio</span>
               )}
             </div>
 
@@ -507,7 +506,7 @@ const Desktop: React.FC<DesktopProps> = ({ onLock, initialTheme }) => {
           {/* Desktop Icons Container */}
           <div className={`absolute top-4 ${theme === 'macos' ? 'right-4 items-end' : 'left-4 items-start'} flex flex-col gap-6`}>
             {Object.values(APPS).filter(app => app.id !== 'about_mac').map((app) => (
-               <motion.button 
+               <motion.button
                  key={app.id}
                  onClick={() => openApp(app.id as AppID)}
                  onDoubleClick={() => openApp(app.id as AppID)}
@@ -564,7 +563,7 @@ const Desktop: React.FC<DesktopProps> = ({ onLock, initialTheme }) => {
         <div className={`flex justify-center z-[9000] ${classes.dockContainer}`}>
           <div className={`${classes.dock}`}>
             {theme === 'linux' && <div className="mr-2 px-3 py-1 bg-green-700 text-white font-bold rounded-sm flex items-center gap-2 whitespace-nowrap"><Terminal size={14}/> Menu</div>}
-            
+
             {Object.values(APPS).filter(app => app.id !== 'about_mac').map((app) => {
               const isOpen = windows.find(w => w.id === app.id);
               return (
@@ -576,7 +575,7 @@ const Desktop: React.FC<DesktopProps> = ({ onLock, initialTheme }) => {
                    <div className={`flex items-center justify-center ${classes.iconContainer} ${theme === 'macos' ? 'w-[52px] h-[52px]' : (theme === 'linux' ? 'w-8 h-8 rounded text-gray-300' : 'w-12 h-12 hover:bg-yellow-100')}`}>
                       <AppIcon appId={app.id as AppID} icon={app.icon} theme={theme} size={theme === 'linux' ? 18 : 52} />
                    </div>
-                   
+
                    {isOpen && theme !== 'linux' && (
                       <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-1 h-1 bg-black/60 rounded-full dark:bg-white/80"></div>
                    )}
@@ -592,7 +591,7 @@ const Desktop: React.FC<DesktopProps> = ({ onLock, initialTheme }) => {
                 </button>
               );
             })}
-            
+
             {theme === 'linux' && <div className="ml-auto text-green-500 font-mono text-sm px-4 self-center hidden sm:block whitespace-nowrap">{currentTime.toLocaleTimeString()}</div>}
           </div>
         </div>
