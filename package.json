@@ -1,11 +1,12 @@
 {
-  "name": "openbio-template",
+  "name": "cunliang-bio",
   "private": true,
   "version": "1.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:github": "VITE_DEPLOY_TARGET=github vite build"
     "preview": "vite preview",
     "build:verify": "vite build && ls -la dist/ && echo 'Build completed successfully!'"
   },
