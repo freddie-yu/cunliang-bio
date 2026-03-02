@@ -24,7 +24,7 @@ const BootSelector: React.FC<BootSelectorProps> = ({ onSelect }) => {
         animate={{ opacity: 1, y: 0 }}
         className="text-center mb-8 md:mb-12 z-10"
       >
-        <h1 className="text-2xl md:text-5xl font-mono font-bold mb-2 md:mb-4 tracking-tight">SYSTEM BOOTLOADER</h1>
+        <h1 className="text-2xl md:text-5xl font-mono font-bold mb-2 md:mb-4 tracking-tight">Welcome to my bio!</h1>
         <p className="text-gray-400 font-mono text-xs md:text-base">Select Your Operating Environment</p>
       </motion.div>
 
