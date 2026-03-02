@@ -29,7 +29,7 @@ const NavItem = ({ id, label, icon: Icon, activeTab, setActiveTab }: any) => (
 );
 
 const AboutApp: React.FC<AboutAppProps> = ({ theme = 'macos', isMobile = false }) => {
-  const [activeTab, setActiveTab] = useState<'profile' | 'stack' | 'focus' | 'experience'>('profile');
+  const [activeTab, setActiveTab] = useState<'profile' | 'stack' | 'experience'>('profile');
 
   // --- Linux Theme (JSON / Code View) ---
   if (theme === 'linux') {
