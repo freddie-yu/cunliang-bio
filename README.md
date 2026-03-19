@@ -8,7 +8,7 @@
 
 ## 🎭 What Is This?
 
-A fully interactive web-based OS simulator that serves as a developer portfolio. Three distinct themes, one chill experience:
+A fully interactive web-based OS simulator that serves as my personal portfolio. Three distinct themes, one chill experience:
 
 - **🎨 Retro/Indie** - Hand-drawn aesthetic with personality
 - **🍎 macOS** - Sleek, glassy, and familiar
