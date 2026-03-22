@@ -10,7 +10,7 @@
 
 ---
 
-## 🎭 What is This?
+### 🎭 What is This?
 
 A fully interactive web-based OS simulator that serves as my personal portfolio. Three distinct themes, one chill experience:
 
