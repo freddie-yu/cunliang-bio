@@ -3,14 +3,16 @@
 # Welcome to Cunliang Bio!
 
 ### *A Multi-Theme Personal Website*
-[![Live Demo](https://img.shields.io/badge/demo-live-success?style=for-the-badge)](https://your-deployment-url.vercel.app)
-[![React](https://img.shields.io/badge/react-19.2.0-61DAFB?style=for-the-badge&logo=react)](https://react.dev)
+[![Live Demo](https://img.shields.io/badge/demo-live-success?style=for-the-badge)](https://cunliang-bio.vercel.app)
+[![React](https://img.shields.io/badge/react-19.2.0-61DAFB?style=for-the-badge&logo=react)](https://reactjs.org/)
 [![TypeScript](https://img.shields.io/badge/typescript-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
 [![Tailwind](https://img.shields.io/badge/tailwind-css-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com)
 
+</div>
+
 ---
 
-### 🎭 What is This?
+## 🎭 What is This?
 
 A fully interactive web-based OS simulator that serves as my personal portfolio. Three distinct themes, one chill experience:
 
